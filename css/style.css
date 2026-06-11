@@ -1,0 +1,284 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #f5f7fa;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #0d6efd;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.logo{
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+    color: #ffd43b;
+}
+
+.menu{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.menu a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #ffd43b;
+    transition: 0.3s;
+}
+
+.menu a:hover::after{
+    width: 100%;
+}
+
+.menu a:hover{
+    color: #ffd43b;
+}
+
+/* ================= BUTTONS ================= */
+
+.auth a{
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.btn-login{
+    color: white;
+    border: 1px solid white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover{
+    background: white;
+    color: #0d6efd;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-register{
+    background: white;
+    color: #0d6efd;
+    padding: 10px 18px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover{
+    background: #ffd43b;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(
+        rgba(13,110,253,0.85),
+        rgba(13,110,253,0.85)
+    );
+}
+
+.hero-content{
+    width: 70%;
+    color: white;
+    animation: fadeIn 1.2s ease;
+}
+
+.hero-content h1{
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.hero-content h2{
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.hero-content p{
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.start-btn{
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: white;
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.start-btn:hover{
+    background: #ffd43b;
+    color: black;
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    padding: 80px 50px;
+}
+
+.features h2{
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 50px;
+    color: #0d6efd;
+}
+
+.feature-container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 320px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.card h3{
+    color: #0d6efd;
+    margin-bottom: 15px;
+}
+
+.card p{
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background: #0d6efd;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 992px){
+
+    .navbar{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-content{
+        width: 90%;
+    }
+
+    .hero-content h1{
+        font-size: 40px;
+    }
+
+    .hero-content h2{
+        font-size: 28px;
+    }
+
+    .hero-content p{
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 768px){
+
+    .menu{
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .auth{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-content h1{
+        font-size: 32px;
+    }
+
+    .hero-content h2{
+        font-size: 24px;
+    }
+
+    .hero-content p{
+        font-size: 16px;
+    }
+
+    .card{
+        width: 100%;
+    }
+}
