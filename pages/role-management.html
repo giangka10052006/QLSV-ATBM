@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân quyền người dùng - SecureEdu</title>
+
+    <link rel="stylesheet" href="../css/role-management.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>
+                <i class="fa-solid fa-user-shield"></i>
+                Quản lý phân quyền
+            </h1>
+
+            <a href="admin-dashboard.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Dashboard
+            </a>
+
+        </div>
+
+        <!-- Thống kê -->
+
+        <div class="role-cards">
+
+            <div class="card admin-card">
+                <i class="fa-solid fa-user-shield"></i>
+                <h3>Admin</h3>
+                <p>Toàn quyền hệ thống</p>
+            </div>
+
+            <div class="card teacher-card">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <h3>Giảng viên</h3>
+                <p>Quản lý điểm</p>
+            </div>
+
+            <div class="card student-card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>Sinh viên</h3>
+                <p>Xem thông tin cá nhân</p>
+            </div>
+
+        </div>
+
+        <!-- Bảng phân quyền -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Chức năng</th>
+                        <th>Admin</th>
+                        <th>Giảng viên</th>
+                        <th>Sinh viên</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Xem danh sách sinh viên</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Thêm sinh viên</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sửa sinh viên</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Xóa sinh viên</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Quản lý tài khoản</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Khóa tài khoản</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Nhập điểm</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sửa điểm</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                    </tr>
+
+                    <tr>
+                        <td>Xem điểm cá nhân</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+
+                    <tr>
+                        <td>Đổi mật khẩu</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Gán quyền -->
+
+        <div class="assign-role">
+
+            <h2>Gán quyền người dùng</h2>
+
+            <form>
+
+                <input type="text"
+                    placeholder="Nhập Email người dùng">
+
+                <select aria-label="chọn">
+                    <option>Chọn vai trò</option>
+                    <option>Admin</option>
+                    <option>Giảng viên</option>
+                    <option>Sinh viên</option>
+                </select>
+
+                <button type="submit">
+                    Cập nhật quyền
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

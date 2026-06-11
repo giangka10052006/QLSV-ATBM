@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sinh viên - SecureEdu</title>
+
+    <link rel="stylesheet" href="../css/student-management.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>
+                <i class="fa-solid fa-user-graduate"></i>
+                Quản lý sinh viên
+            </h1>
+
+            <a href="admin-dashboard.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Dashboard
+            </a>
+
+        </div>
+
+        <div class="toolbar">
+
+            <button class="add-btn">
+                <i class="fa-solid fa-plus"></i>
+                Thêm sinh viên
+            </button>
+
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm sinh viên...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Mã SV</th>
+                        <th>Họ tên</th>
+                        <th>Lớp</th>
+                        <th>Email</th>
+                        <th>SĐT</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>SV001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>CNTT01</td>
+                        <td>vana@gmail.com</td>
+                        <td>0123456789</td>
+                        <td>
+                            <button class="edit-btn" aria-label="Sửa thông tin">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+
+                            <button class="delete-btn" aria-label="Xóa thông tin">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>SV002</td>
+                        <td>Trần Văn B</td>
+                        <td>CNTT02</td>
+                        <td>vanb@gmail.com</td>
+                        <td>0987654321</td>
+                        <td>
+                            <button class="edit-btn" aria-label="Sửa thông tin">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+
+                            <button class="delete-btn" aria-label="Xóa thông tin">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
