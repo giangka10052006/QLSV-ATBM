@@ -1,165 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Admin Dashboard - SecureEdu</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - SecureEdu</title>
+		<link rel="stylesheet" href="../css/dashboard.css" />
 
-    <link rel="stylesheet" href="../css/dashboard.css">
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+		/>
+	</head>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
+	<body>
+		<div class="container">
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<div class="logo">SecureEdu</div>
 
-<body>
+				<ul>
+					<li class="active">
+						<a href="#">
+							<i class="fa-solid fa-chart-line"></i>
+							Dashboard
+						</a>
+					</li>
 
-    <div class="container">
+					<li>
+						<a href="#">
+							<i class="fa-solid fa-user-graduate"></i>
+							Quản lý sinh viên
+						</a>
+					</li>
 
-        <!-- Sidebar -->
-        <div class="sidebar">
+					<li>
+						<a href="#">
+							<i class="fa-solid fa-users"></i>
+							Quản lý tài khoản
+						</a>
+					</li>
 
-            <div class="logo">
-                SecureEdu
-            </div>
+					<li>
+						<a href="#">
+							<i class="fa-solid fa-user-shield"></i>
+							Phân quyền
+						</a>
+					</li>
 
-            <ul>
+					<li>
+						<a href="#">
+							<i class="fa-solid fa-clock-rotate-left"></i>
+							Nhật ký hệ thống
+						</a>
+					</li>
 
-                <li class="active">
-                    <a href="#">
-                        <i class="fa-solid fa-chart-line"></i>
-                        Dashboard
-                    </a>
-                </li>
+					<li>
+						<a href="login.html" onclick="logout()">
+							<i class="fa-solid fa-right-from-bracket"></i>
+							Đăng xuất
+						</a>
+					</li>
+				</ul>
+			</div>
 
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-user-graduate"></i>
-                        Quản lý sinh viên
-                    </a>
-                </li>
+			<!-- Main Content -->
+			<div class="main-content">
+				<div class="header">
+					<h1>Dashboard Admin</h1>
 
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-users"></i>
-                        Quản lý tài khoản
-                    </a>
-                </li>
+					<div class="admin-info">Xin chào, Admin</div>
+				</div>
 
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-user-shield"></i>
-                        Phân quyền
-                    </a>
-                </li>
+				<!-- Cards -->
 
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-                        Nhật ký hệ thống
-                    </a>
-                </li>
+				<div class="cards">
+					<div class="card">
+						<i class="fa-solid fa-user-graduate"></i>
+						<h3>1.250</h3>
+						<p>Sinh viên</p>
+					</div>
 
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        Đăng xuất
-                    </a>
-                </li>
+					<div class="card">
+						<i class="fa-solid fa-chalkboard-user"></i>
+						<h3>75</h3>
+						<p>Giảng viên</p>
+					</div>
 
-            </ul>
+					<div class="card">
+						<i class="fa-solid fa-users"></i>
+						<h3>1.325</h3>
+						<p>Tài khoản</p>
+					</div>
 
-        </div>
+					<div class="card">
+						<i class="fa-solid fa-user-lock"></i>
+						<h3>8</h3>
+						<p>Tài khoản khóa</p>
+					</div>
+				</div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+				<!-- Recent Activities -->
 
-            <div class="header">
+				<div class="activity">
+					<h2>Hoạt động gần đây</h2>
 
-                <h1>Dashboard Admin</h1>
+					<table>
+						<thead>
+							<tr>
+								<th>Thời gian</th>
+								<th>Người dùng</th>
+								<th>Hoạt động</th>
+							</tr>
+						</thead>
 
-                <div class="admin-info">
-                    Xin chào, Admin
-                </div>
+						<tbody>
+							<tr>
+								<td>01/08/2026</td>
+								<td>Admin</td>
+								<td>Thêm sinh viên mới</td>
+							</tr>
 
-            </div>
+							<tr>
+								<td>01/08/2026</td>
+								<td>Giảng viên</td>
+								<td>Cập nhật điểm</td>
+							</tr>
 
-            <!-- Cards -->
+							<tr>
+								<td>02/08/2026</td>
+								<td>Sinh viên</td>
+								<td>Đổi mật khẩu</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="../js/role.js"></script>
 
-            <div class="cards">
-
-                <div class="card">
-                    <i class="fa-solid fa-user-graduate"></i>
-                    <h3>1.250</h3>
-                    <p>Sinh viên</p>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                    <h3>75</h3>
-                    <p>Giảng viên</p>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-users"></i>
-                    <h3>1.325</h3>
-                    <p>Tài khoản</p>
-                </div>
-
-                <div class="card">
-                    <i class="fa-solid fa-user-lock"></i>
-                    <h3>8</h3>
-                    <p>Tài khoản khóa</p>
-                </div>
-
-            </div>
-
-            <!-- Recent Activities -->
-
-            <div class="activity">
-
-                <h2>Hoạt động gần đây</h2>
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Thời gian</th>
-                            <th>Người dùng</th>
-                            <th>Hoạt động</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>01/08/2026</td>
-                            <td>Admin</td>
-                            <td>Thêm sinh viên mới</td>
-                        </tr>
-
-                        <tr>
-                            <td>01/08/2026</td>
-                            <td>Giảng viên</td>
-                            <td>Cập nhật điểm</td>
-                        </tr>
-
-                        <tr>
-                            <td>02/08/2026</td>
-                            <td>Sinh viên</td>
-                            <td>Đổi mật khẩu</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</body>
-
+		<script>
+			checkRole("admin");
+		</script>
+	</body>
 </html>

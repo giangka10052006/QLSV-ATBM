@@ -1,0 +1,103 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #0d6efd,
+        #4f9bff
+    );
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.error-box{
+    width:700px;
+    max-width:90%;
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+    animation:fadeIn 0.8s ease;
+}
+
+.icon{
+    font-size:80px;
+    color:#dc3545;
+    margin-bottom:20px;
+}
+
+.error-box h1{
+    font-size:100px;
+    color:#dc3545;
+    margin-bottom:10px;
+}
+
+.error-box h2{
+    color:#333;
+    margin-bottom:20px;
+}
+
+.error-box p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.home-btn,
+.login-btn{
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:10px;
+    transition:.3s;
+    font-weight:600;
+}
+
+.home-btn{
+    background:#0d6efd;
+    color:white;
+}
+
+.login-btn{
+    background:#198754;
+    color:white;
+}
+
+.home-btn:hover,
+.login-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
