@@ -1,108 +1,106 @@
 // Đăng ký
 
-function register(e) {
-	e.preventDefault();
+async function register(event) {
+	event.preventDefault();
 
 	const fullName = document.getElementById("fullName").value;
+
 	const email = document.getElementById("email").value;
+
 	const password = document.getElementById("password").value;
-	const confirmPassword = document.getElementById("confirmPassword").value;
+
 	const role = document.getElementById("role").value;
 
-	if (password !== confirmPassword) {
-		alert("Mật khẩu xác nhận không khớp!");
-		return;
-	}
+	const response = await fetch("http://localhost:5000/api/auth/register", {
+		method: "POST",
 
-	if (localStorage.getItem(email)) {
-		alert("Email đã tồn tại!");
-		return;
-	}
+		headers: {
+			"Content-Type": "application/json",
+		},
 
-	const user = {
-		fullName,
-		email,
-		password,
-		role,
-	};
+		body: JSON.stringify({
+			fullName,
+			email,
+			password,
+			role,
+		}),
+	});
 
-	localStorage.setItem(email, JSON.stringify(user));
+	const data = await response.json();
 
-	alert("Đăng ký thành công!");
-
-	window.location.href = "login.html";
+	alert(data.message);
 }
-
 
 // Tạo Admin mặc định
 
 if (!localStorage.getItem("admin@gmail.com")) {
-
 	const admin = {
 		fullName: "Administrator",
 		email: "admin@gmail.com",
 		password: "123456",
-		role: "admin"
+		role: "admin",
 	};
 
-	localStorage.setItem(
-		admin.email,
-		JSON.stringify(admin)
-	);
+	localStorage.setItem(admin.email, JSON.stringify(admin));
 }
 
 // Đăng nhập
 
-function login(e) {
+async function login(event) {
+	event.preventDefault();
 
-	e.preventDefault();
+	const email = document.getElementById("email").value;
 
-	const email =
-		document.getElementById("email").value;
+	const password = document.getElementById("password").value;
 
-	const password =
-		document.getElementById("password").value;
+	try {
+		const response = await fetch("http://localhost:5000/api/auth/login", {
+			method: "POST",
 
-	const user =
-		JSON.parse(localStorage.getItem(email));
+			headers: {
+				"Content-Type": "application/json",
+			},
 
-	if (!user) {
-		alert("Tài khoản không tồn tại!");
-		return;
-	}
+			body: JSON.stringify({
+				email,
+				password,
+			}),
+		});
 
-	if (user.password !== password) {
-		alert("Sai mật khẩu!");
-		return;
-	}
+		const data = await response.json();
 
-	localStorage.setItem(
-		"currentUser",
-		JSON.stringify(user)
-	);
+		if (response.ok) {
+			localStorage.setItem("token", data.token);
 
-	if (user.role === "admin") {
-		window.location.href =
-			"admin-dashboard.html";
-	}
-	else if (user.role === "teacher") {
-		window.location.href =
-			"teacher-dashboard.html";
-	}
-	else {
-		window.location.href =
-			"student-dashboard.html";
+			localStorage.setItem("user", JSON.stringify(data.user));
+
+			alert("Đăng nhập thành công");
+
+			// Phân quyền giao diện
+
+			if (data.user.role === "admin") {
+				window.location.href = "admin-dashboard.html";
+			} else if (data.user.role === "teacher") {
+				window.location.href = "teacher-dashboard.html";
+			} else {
+				window.location.href = "student-dashboard.html";
+			}
+		} else {
+			alert(data.message);
+		}
+	} catch (error) {
+		console.log(error);
+
+		alert("Lỗi kết nối server");
 	}
 }
 
 // Đăng xuất
 
 function logout() {
+	localStorage.removeItem("token");
 
-	localStorage.removeItem(
-		"currentUser"
-	);
+	localStorage.removeItem("user");
 
-	window.location.href =
-		"login.html";
+	window.location.href = "login.html";
 }
