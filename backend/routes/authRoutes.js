@@ -5,6 +5,7 @@ const User = require("../models/User");
 
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const transporter = require("../services/emailService");
 router.post("/register", async (req, res) => {
 	try {
 		const { fullName, email, password, role } = req.body;
@@ -126,4 +127,102 @@ router.post("/create-admin", async (req, res) => {
 		});
 	}
 });
+
+router.post(
+	"/forgot-password",
+
+	async (req, res) => {
+		try {
+			const { email } = req.body;
+
+			const user = await User.findOne({
+				email,
+			});
+
+			if (!user) {
+				return res.status(404).json({
+					message: "Email không tồn tại",
+				});
+			}
+
+			const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+			user.otp = otp;
+
+			user.otpExpire = Date.now() + 5 * 60 * 1000;
+
+			await user.save();
+
+			await transporter.sendMail({
+				from: process.env.EMAIL_USER,
+
+				to: email,
+
+				subject: "SecureEdu OTP",
+
+				text: `Mã OTP của bạn là: ${otp}`,
+			});
+
+			res.json({
+				message: "OTP đã gửi tới email",
+			});
+		} catch (error) {
+			res.status(500).json({
+				message: error.message,
+			});
+		}
+	},
+);
+router.post(
+	"/verify-otp",
+
+	async (req, res) => {
+		const { email, otp } = req.body;
+
+		const user = await User.findOne({
+			email,
+		});
+
+		if (!user || user.otp !== otp) {
+			return res.status(400).json({
+				message: "OTP không đúng",
+			});
+		}
+
+		if (user.otpExpire < Date.now()) {
+			return res.status(400).json({
+				message: "OTP hết hạn",
+			});
+		}
+
+		res.json({
+			message: "OTP hợp lệ",
+		});
+	},
+);
+router.post(
+	"/reset-password",
+
+	async (req, res) => {
+		const { email, newPassword } = req.body;
+
+		const user = await User.findOne({
+			email,
+		});
+
+		const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+		user.password = hashedPassword;
+
+		user.otp = null;
+
+		user.otpExpire = null;
+
+		await user.save();
+
+		res.json({
+			message: "Đổi mật khẩu thành công",
+		});
+	},
+);
 module.exports = router;
