@@ -8,7 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const authMiddleware = require("./middleware/authMiddleware");
 const roleMiddleware = require("./middleware/roleMiddleware");
 const studentRoutes = require("./routes/studentRoutes");
-
+const userRoutes = require("./routes/userRoutes");
 connectDB();
 
 const app = express();
@@ -17,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/students", studentRoutes);
+app.use("/api/users", userRoutes);
 app.get("/", (req, res) => {
 	res.send("SecureEdu API Running");
 });
